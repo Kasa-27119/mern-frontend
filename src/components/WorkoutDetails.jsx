@@ -176,18 +176,27 @@ const WorkoutDetails = ({workout}) => {
       <p>{formatDistanceToNow(new Date(workout.createdAt), {includesSeconds: true}, {addSuffix: true})} ago</p>
       <p><strong>Created By: </strong>{workout.user_id ? getEmailCharsBeforeAtSymbol(workout.user_id) : 'Unknown'}</p>
       <button onClick={handleNavigate}>Read More</button>
+
+      {workout.user_id === user_id && (
+        <>
+          <span onClick={handleEdit}>
+            <i className='fa-solid fa-pen'></i>
+          </span>
+          <span onClick={handleDelete}>
+            <i className="fa-solid fa-trash"></i>
+          </span>
+        </>
+
+      )}
       
       {/* delete/edit btns */}
       <div className='bottom-container'>
-        <span onClick={handleEdit}>
-            <i className='fa-solid fa-pen'></i>
-        </span>
-        <span onClick={handleDelete}>
-          <i className="fa-solid fa-trash"></i>
-        </span>
-      </div>
-        </>
-      )}
+        
+    </div>
+    </>
+    )}
+
+
       {/* cond. return, if true - 'hide comments', otherwise 'show...'*/}
       <button
       onClick={() => {
