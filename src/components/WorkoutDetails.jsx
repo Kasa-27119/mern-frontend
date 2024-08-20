@@ -161,42 +161,31 @@ const WorkoutDetails = ({workout}) => {
       ) : (
         <>
           <div className='top-container'>
-        <h4>{workout.title}</h4>
-        {workout.image && (
-          <img className='workout-image' src={`${baseURL}/public/uploads/${workout.image}`} alt={workout.title} />
-        )}
-        <span onClick={handleEdit}>
-          <i className="fa-solid fa-pen"></i>
-        </span>
-      </div>
+            <h4>{workout.title}</h4>
+            {workout.image && (
+              <img className='workout-image' src={`${baseURL}/public/uploads/${workout.image}`} alt={workout.title} />
+            )}
+          </div>
 
-      <p><strong>Load (kg):</strong> {workout.load}</p>
-      <p><strong>reps (kg):</strong> {workout.reps}</p>
-      {/* format post time */}
-      <p>{formatDistanceToNow(new Date(workout.createdAt), {includesSeconds: true}, {addSuffix: true})} ago</p>
-      <p><strong>Created By: </strong>{workout.user_id ? getEmailCharsBeforeAtSymbol(workout.user_id) : 'Unknown'}</p>
-      <button onClick={handleNavigate}>Read More</button>
+          <p><strong>Load (kg):</strong> {workout.load}</p>
+          <p><strong>reps (kg):</strong> {workout.reps}</p>
+          {/* format post time */}
+          <p>{formatDistanceToNow(new Date(workout.createdAt), {includesSeconds: true}, {addSuffix: true})} ago</p>
+          <p><strong>Created By: </strong>{workout.user_id ? getEmailCharsBeforeAtSymbol(workout.user_id) : 'Unknown'}    </p>
+          <button onClick={handleNavigate}>Read More</button>
 
-      {workout.user_id === user_id && (
-        <>
-          <span onClick={handleEdit}>
-            <i className='fa-solid fa-pen'></i>
-          </span>
-          <span onClick={handleDelete}>
-            <i className="fa-solid fa-trash"></i>
-          </span>
+          {workout.user_id === user_id && (
+            <>
+              <span onClick={handleEdit}>
+                <i className='fa-solid fa-pen'></i>
+              </span>
+              <span onClick={handleDelete}>
+                <i className='fa-solid fa-trash'></i>
+              </span>
+            </>
+          )}
         </>
-
       )}
-      
-      {/* delete/edit btns */}
-      <div className='bottom-container'>
-        
-    </div>
-    </>
-    )}
-
-
       {/* cond. return, if true - 'hide comments', otherwise 'show...'*/}
       <button
       onClick={() => {
